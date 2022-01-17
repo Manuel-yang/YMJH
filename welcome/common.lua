@@ -192,12 +192,11 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 				while (true) do
 					--购买物品
 					mSleep(1000)
-					gou_maiX,gou_maiY = findMultiColorInRegionFuzzy( 0x1d2829, "-101|115|0xd7e0e7,-95|111|0x5b6d7d,-35|176|0xc1cbc7,-1|185|0xafb8b3,1|185|0x2c2e2d,8|185|0x1e1f1e", 90, 343, 169, 909, 576)
+					gou_maiX, gou_maiY = findMultiColorInRegionFuzzy( 0xfdf8f8, "3|12|0xc9ad98,50|16|0xc9d0cc,41|-113|0xc4c4c4,55|-114|0x2f4c4d,181|-108|0xffffff,-46|-118|0x202f2c", 90, 642, 325, 1239, 698)
 					if gou_maiX > 0 then
 						toast("购买",1)
-						tap( 607,  502)
+						tap(  888,  625)
 						mSleep(1000)
-						tap(803,  496)
 						--银两不足
 						changeX,changeY = findMultiColorInRegionFuzzy( 0xbbc6c6, "-20|-56|0x3a4a44,-320|6|0xb29d91,9|19|0x8bab80", 90, 324, 308, 957, 562)
 						if changeX > 0 then
@@ -215,33 +214,34 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
 					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
 					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					mSleep(1000)
+					mSleep(1500)
 					tap(229,  180)
 					--一键提交坐标
 					mSleep(1000)
-					
-					
 					local tab = {
 						"1800118201182011860318c03198021b386180e41803cd801cd801c18074181e61b3821b0021980318c0318e0318403$交$114$20$19",
 					}
 					local index = addTSOcrDictEx(tab)
-					--请自行更改参数
-					--1: 0,0,0,0 范围坐标，请自行修改
-					--2: "010101 , 010101 # 181918 , 181918" 偏色,多组或单组.请在偏色列表中选择
-					--3: 90 匹配精度 【0-100】
 					ti_jiaoX, ti_jiaoY = tsFindText(index, "交", 971, 396, 1098, 431, "010101 , 010101 # 181918 , 181918", 90)
 					if ti_jiaoX > 0 then
 						tap( 1023,  425)
+						--内容已复制到剪贴板!
+						while(true) do
+							--最后返回厉万邦点一下屏幕
+						--内容已复制到剪贴板!
+							local tab = {
+							"3e3827c704e0e09cdc339b8e7377ce6ff1cdf8b9b81f3703e6ffbcdff39bfe73704e6e09ddc1383827e71cfce38f082$完$212$19$20",
+							}
+							local index = addTSOcrDictEx(tab)
+							x, y = tsFindText(index, "完", 297, 610, 348, 640, "D2DBDA , 010101 # 8C9697 , 464644", 90)
+							if x > 0 then
+								tap(x, y)
+								toast("课业完成",1)
+								return									
+							end
+						end
 					end
 					--结束按钮
-					mSleep(1000)
-					finishX, finishY = findMultiColorInRegionFuzzy( 0x42544d, "19|-1|0x475850,35|-5|0x56645e,16|26|0xbdc8c6,18|29|0xbfc9c8,24|32|0x130c0b,48|32|0xc0c9c7", 90, 730, 407, 935, 530)
-					if finishX > 0 then
-						randomTap(finishX, finishY)
-						tap( 447,  483)
-						toast("课业完成",1)
-						return
-					end
 				end
 			end
 		end
