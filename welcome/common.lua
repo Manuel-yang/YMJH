@@ -2,7 +2,54 @@ require "TSLib"
 
 local common = {}
 
-common.test= "test"
+function common.suan_gua()
+	huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+	if huo_dongX > 0 then
+		randomTap(huo_dongX, huo_dongY)
+		toast("每日一卦",1)
+	else
+		return
+	end
+	tap(  730,  683)
+	mSleep(1000)
+	--每日一卦前往
+	x,y = findMultiColorInRegionFuzzy( 0xb5c1c3, "-3|0|0xb9c5c7,-14|3|0x010101,-12|4|0x494e4f,-21|6|0xbfcbce,-1|7|0xb9c5c9", 90, 735, 523, 875, 556)
+	if x > 0 then
+		randomTap(x, y)
+		mSleep(3000)
+		--内容已复制到剪贴板!
+		local tab = {
+		"007fe00ffc01ff8030c0061800c33ff867ff0c9861830c3061860c30c187fe30ffc71ff8e0001c00@000$占$136$19$17",
+		}
+		local index = addTSOcrDictEx(tab)
+		while (true) do
+			suan_mingX, suan_mingY = tsFindText(index, "占", 1013, 470,1121, 504, "1F2020 , 171818 # 525553 , 4D514F # 505351 , 4F5351", 90)
+			if suan_mingX > 0 then
+				tap(1062,  486)
+				mSleep(1000)
+				tap( 642,  214)
+				mSleep(1000)
+				local touch = touch(1)
+				touch:on(  629,  286):move( 629,  330):move( 629,  360):move( 629,  400):off()
+				mSleep(500)
+				tap(917,  562)
+				mSleep(500)
+				tap(1030,  442)
+				mSleep(500)
+				tap(798,  492)
+				mSleep(500)
+				tap(798,  492)
+				toast("每日一卦完成",1)
+				return
+			end
+		end
+	else
+		toast("每日一卦已经完成",1)
+		return
+	end
+end
+
+
 
 --茶馆活动
 function common.cha_guan()
@@ -246,6 +293,33 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 			end
 		end
 	end
+end
+
+
+function shi_li()
+	huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+	if huo_dongX > 0 then
+		randomTap(huo_dongX, huo_dongY)
+		toast("势力任务",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	mSleep(1000)
+	tap( 371,  684)
+	--势力任务前往
+	x,y = findMultiColorInRegionFuzzy( 0xd2dadc, "28|12|0xbfcccf,27|-5|0xc0cbce,41|-8|0xb7c3c6,48|-1|0x010101", 90, 657, 211, 784, 258)
+	if x > 0 then
+		randomTap(x, y)
+	
+	else
+		toast("势力任务已经完成",1)
+		return
+	end
+
+	
+	
+	
 end
 
 return common

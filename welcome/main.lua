@@ -7,4 +7,5 @@ local common = require("common")
 
 --common.ke_ye()
 --common.cha_guan()
-common.bang_pai()
+--common.bang_pai()
+common.suan_gua()
