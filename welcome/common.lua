@@ -3,13 +3,18 @@ require "TSLib"
 local common = {}
 
 function common.suan_gua()
-	huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
 	if huo_dongX > 0 then
 		randomTap(huo_dongX, huo_dongY)
 		toast("每日一卦",1)
 	else
 		return
 	end
+	mSleep(500)
 	tap(  730,  683)
 	mSleep(1000)
 	--每日一卦前往
@@ -53,15 +58,18 @@ end
 
 --茶馆活动
 function common.cha_guan()
-	mSleep(2000)
-	toast("茶馆说书")
 	--打开活动界面
-	x,y = findMultiColorInRegionFuzzy( 0x5c5a50, "11|9|0x4d4b3a,1|8|0xcec2a1,-3|20|0xe8e8d1", 90, 885, 21, 916, 57)
-	if x > 0 then
-		randomTap(x,y)
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	
+	if huo_dongX > 0 then
+		tap( 905,   36)
+		toast("茶馆说书")
 		mSleep(2500)
-		bt1X,bt1Y = findMultiColorInRegionFuzzy( 0x6d7374, "24|9|0xc2cfd1,1|9|0x1b1b1b,16|18|0x272828", 90, 194, 657, 284, 708)
-		randomTap(bt1X,bt1Y)
+		tap( 242,  685)
 		mSleep(1000)
 		cha_guanX,cha_guanY = findMultiColorInRegionFuzzy( 0xc6d2d4, "28|1|0xc9d4d5,58|3|0xbdcacc,84|-9|0x696c74", 90, 239, 472, 323, 503)
 		if cha_guanX < 0 then
@@ -116,9 +124,14 @@ end
 
 --课业任务
 function common.ke_ye()
-huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+	--打开活动界面
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
 	if huo_dongX > 0 then
-		randomTap(huo_dongX, huo_dongY)
+		tap( 905,   36)
 		mSleep(1000)
 		tap( 250,  670)
 		mSleep(1000)
@@ -167,14 +180,10 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 					end
 					--将右侧拖到第一个任务
 					local touch = touch(1) 
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					mSleep(1000)
+					touch:on( 238,  209):move(200,260):move(200,290):move(200,350):off()
 					tap(229,  180)
 					--一键提交坐标
 					mSleep(1000)
-					
 					
 					local tab = {
 						"1800118201182011860318c03198021b386180e41803cd801cd801c18074181e61b3821b0021980318c0318e0318403$交$114$20$19",
@@ -205,9 +214,14 @@ end
 
 
 function common.bang_pai()
-huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+	--打开活动界面
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
 	if huo_dongX > 0 then
-		randomTap(huo_dongX, huo_dongY)
+		tap( 905,   36)
 		mSleep(1000)
 		tap( 371,  672)
 		mSleep(1000)
@@ -258,13 +272,10 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 					end
 					--将右侧拖到第一个任务
 					local touch = touch(1) 
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					touch:on( 238,  209):move(200,230):move(200,260):move(200,290):off()
-					mSleep(1500)
+					touch:on( 238,  209):move(200,250):move(200,280):move(200,310):off()
 					tap(229,  180)
+					mSleep(1500)
 					--一键提交坐标
-					mSleep(1000)
 					local tab = {
 						"1800118201182011860318c03198021b386180e41803cd801cd801c18074181e61b3821b0021980318c0318e0318403$交$114$20$19",
 					}
@@ -296,10 +307,16 @@ huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8
 end
 
 
-function shi_li()
-	huo_dongX,huo_dongY = findMultiColorInRegionFuzzy( 0xc5b793, "14|3|0x71634b,13|8|0x4e4738,9|18|0xc6b894", 90, 887, 22, 913, 55)
+function common.shi_li()
+	--内容已复制到剪贴板!
+	--打开活动界面
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
 	if huo_dongX > 0 then
-		randomTap(huo_dongX, huo_dongY)
+		tap( 905,   36)
 		toast("势力任务",1)
 	else
 		toast("请重启脚本",1)
@@ -311,7 +328,21 @@ function shi_li()
 	x,y = findMultiColorInRegionFuzzy( 0xd2dadc, "28|12|0xbfcccf,27|-5|0xc0cbce,41|-8|0xb7c3c6,48|-1|0x010101", 90, 657, 211, 784, 258)
 	if x > 0 then
 		randomTap(x, y)
-	
+		mSleep(3000)
+		
+		while (true) do
+			local touch = touch(1) 
+			touch:on( 238,  209):move(200,250):move(200,280):move(200,310):off()
+			tap(229,  180)
+			mSleep(1500)
+			
+			ti_muX, ti_muY = findMultiColorInRegionFuzzy( 0xffffff, "3|2|0xffffff,6|2|0x5c6679,-141|216|0x141b28,-171|228|0x19212f,-171|295|0x141a28,-260|392|0x0d1016,-261|487|0x0d1018,-1|90|0xcbcdd0", 90, 799, 11, 1243, 659)
+			if ti_muX > 0 then
+				mSleep(1000)
+				tap(1022,  258)
+			end
+		end
+		
 	else
 		toast("势力任务已经完成",1)
 		return
