@@ -427,6 +427,51 @@ function common.lun_jian()
 		end
 	end
 end
+
+function common.jiang_li()
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	if huo_dongX > 0 then
+		mSleep(500)
+		tap( 905,   36)
+		toast("每日奖励",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	tap(1143,  668)
+	mSleep(500)
+	tap(1143,  668)
+	mSleep(500)
+	tap(1143,  668)
+	mSleep(500)
+	tap(1143,  668)
+	mSleep(500)
+	tap(1143,  668)
+	mSleep(500)
+	tap(1143,  668)
+	mSleep(2000)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap( 1162,   45)
+	toast("完成每日奖励",1)
+	return
+end
 	
 
 return common
