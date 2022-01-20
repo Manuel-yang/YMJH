@@ -318,11 +318,11 @@ function common.shi_li()
 	if huo_dongX > 0 then
 		tap( 905,   36)
 		toast("势力任务",1)
+		mSleep(1000)
 	else
 		toast("请重启脚本",1)
 		return
 	end
-	mSleep(1000)
 	tap( 371,  684)
 	--势力任务前往
 	x,y = findMultiColorInRegionFuzzy( 0xd2dadc, "28|12|0xbfcccf,27|-5|0xc0cbce,41|-8|0xb7c3c6,48|-1|0x010101", 90, 657, 211, 784, 258)
@@ -347,10 +347,86 @@ function common.shi_li()
 		toast("势力任务已经完成",1)
 		return
 	end
-
-	
-	
-	
 end
+
+function common.lun_jian()
+	--内容已复制到剪贴板!
+	--打开活动界面
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	if huo_dongX > 0 then
+		mSleep(500)
+		tap( 905,   36)
+		toast("论剑",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	mSleep(1000)
+	tap(495,  681)
+	mSleep(500)
+	tap( 283,  332)
+	--内容已复制到剪贴板!
+	while true do
+		local tab = {
+		"0006180f0e1f831e00180038007ffefffff9930cc98664dfffedfb31cc98664c33660803@0$准$136$17$17",
+		}
+		local index = addTSOcrDictEx(tab)
+		--判定进入论剑时的坐标
+		zhun_beiX, zhun_beiY = tsFindText(index, "准", 568, 1, 633, 32, "CCD3D8 , 322C26", 65)
+		if zhun_beiX > 0 then
+			mSleep(1500)
+			tap(632,   82)
+			mSleep(4000)
+			--内容已复制到剪贴板!
+			--离开按钮检测
+			local touch = touch(1)
+			touch:on( 190,  537):move( 190,  507)
+			mSleep(3000)
+			touch = touch:on( 190,  537)
+			touch:off()
+			local tab = {
+				"300003007f33f7f33e603066030a6634e6e37e7e37a76f33e6f33e67326637a7c3de7c34e6e3026233e6037e7f3207f3007230000$离$206$20$21",
+			}
+			local index = addTSOcrDictEx(tab)
+			while (true) do
+				li_kaiX, li_kaiY = tsFindText(index, "离",583, 627,645, 658, "B1B2B3 , 4D4C4B", 65)
+				if li_kaiX > 0 then
+					mSleep(1000)
+					tap(623,  636)
+					while (true) do
+						jie_shuX, jie_shuY = findMultiColorInRegionFuzzy( 0xad452c, "3|9|0xd19f55,9|318|0x3f2012,25|315|0x361a00,-17|311|0x361a06,15|10|0xcb6c42,6|11|0xc78947", 90, 804, 119, 1049, 619)
+						if jie_shuX > 0 then
+							mSleep(500)
+							tap(1071,   99)
+							toast("论剑结束",1)
+							return
+						end
+					end
+				else
+					tap(1082,  529)
+					mSleep(500)
+					tap(1082,  529)
+					mSleep(500)
+					tap(1082,  529)
+					mSleep(500)
+					tap(969,  570)
+					mSleep(500)
+					tap(1009,  657)
+					mSleep(500)
+					tap( 982,  483)
+					mSleep(500)
+					tap( 1070,  418)
+					mSleep(500)
+				end
+				
+			end
+		end
+	end
+end
+	
 
 return common

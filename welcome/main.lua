@@ -3,9 +3,11 @@
 require("TSLib")
 init(1)
 local common = require("common")
-
+local tools = require("tools")
 --common.suan_gua()
 --common.ke_ye()
 --common.cha_guan()
 --common.bang_pai()
-common.shi_li()
+--common.shi_li()
+common.lun_jian()
+--tools.gong_ji()
