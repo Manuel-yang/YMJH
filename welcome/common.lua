@@ -472,6 +472,40 @@ function common.jiang_li()
 	toast("完成每日奖励",1)
 	return
 end
+
+
+function common.fu_li()
+	toast("每日福利领取",1)
+	mSleep(1000)
+	tap( 902,  105)
+	mSleep(1300)
+	tap(324,  587)
+	mSleep(400)
+	tap(420,  588)
+	mSleep(400)
+	tap( 502,  581)
+	mSleep(400)
+	tap( 608,  578)
+	mSleep(400)
+	tap( 695,  576)
+	mSleep(500)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap(994,  254)
+	mSleep(400)
+	tap( 1162,   45)
+	toast("完成每日福利",1)
+end
 	
 
 return common
