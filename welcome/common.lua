@@ -174,14 +174,23 @@ function common.ke_ye()
 					end
 					--选择对话叉
 					mSleep(1000)
-					diaX,diaY = findMultiColorInRegionFuzzy( 0xffffff, "2|1|0xffffff,-242|219|0xfefefe,-666|144|0x0e122a", 90, 353, 12, 1221, 545)
-					if diaX > 0 then
-						--tap(1181,   35)
+					
+					--答题
+					local tab = {
+					"040000c3001e3803c300f87e6f0efffceff7dece77ece7f6ce7e6ce3f6ce7becef1ecef0ecefceff7e6ff74700707007070070600$答$227$20$21",
+					}
+					local index = addTSOcrDictEx(tab)
+					x, y = tsFindText(index, "答",1089, 97,1152, 140, "989D9E , 524D4B # 908A8B , 636767 # 959191 , 696E6D", 65)
+					if x > 0 then
+						mSleep(400)
+						tap( 1175,   38)
 					end
+					
 					--将右侧拖到第一个任务
 					local touch = touch(1) 
 					touch:on( 238,  209):move(200,260):move(200,290):move(200,350):off()
-					tap(229,  180)
+					mSleep(300)
+					tap(  208,  148)
 					--一键提交坐标
 					mSleep(1000)
 					
@@ -370,7 +379,17 @@ function common.lun_jian()
 	mSleep(500)
 	tap( 283,  332)
 	--内容已复制到剪贴板!
+	local tab = {
+		"000e0183c018fff1ffff1fffd1cc1818ffe18ffe1afff1f0070ffff1fffc7b330fb3305b3301bfff1ffff1f3301b33113fff03fff01ffe$确$265$20$22",
+	}
+	local index = addTSOcrDictEx(tab)
 	while true do
+--内容已复制到剪贴板!
+		que_renX, que_renY = tsFindText(index, "确", 0, 0, 0, 0, "4D4C4A , 3B4140", 65)
+		if que_renX > 0 then
+			mSleep(400)
+			tap(823,  485)
+		end
 		local tab = {
 		"0006180f0e1f831e00180038007ffefffff9930cc98664dfffedfb31cc98664c33660803@0$准$136$17$17",
 		}
@@ -398,10 +417,19 @@ function common.lun_jian()
 					mSleep(1000)
 					tap(623,  636)
 					while (true) do
-						jie_shuX, jie_shuY = findMultiColorInRegionFuzzy( 0xad452c, "3|9|0xd19f55,9|318|0x3f2012,25|315|0x361a00,-17|311|0x361a06,15|10|0xcb6c42,6|11|0xc78947", 90, 804, 119, 1049, 619)
+						--内容已复制到剪贴板!
+						local tab = {
+							"ffffffffff8008e0011c0073801e703f0fffc1ffe03800070000e0001fffe3fffe7fc1ce0039c007380067003ce01f1e03c@001$匹$189$19$21",
+						}
+						local index = addTSOcrDictEx(tab)
+						jie_shuX, jie_shuY = tsFindText(index, "匹", 838, 539,1002, 611, "3E4141 , 3D4141", 65)
 						if jie_shuX > 0 then
-							mSleep(500)
-							tap(1071,   99)
+							mSleep(1500)
+							tap(932,  484)
+							mSleep(1000)
+							tap(1073,  100)
+							mSleep(1000)
+							tap(1164,   40)
 							toast("论剑结束",1)
 							return
 						end
@@ -504,7 +532,186 @@ function common.fu_li()
 	tap(994,  254)
 	mSleep(400)
 	tap( 1162,   45)
+	mSleep(400)
+	tap( 477,  459)
+	mSleep(400)
+	tap( 202,  477)
+	mSleep(500)
+	tap(1167,   32)
+	mSleep(500)
+	tap(1167,   32)
 	toast("完成每日福利",1)
+end
+
+function common.ying_xiong_bang()
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+		"0006180f0e1f831e00180038007ffefffff9930cc98664dfffedfb31cc98664c33660803@0$准$136$17$17",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	if huo_dongX > 0 then
+		mSleep(500)
+		tap( 905,   36)
+		toast("江湖英雄榜",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	mSleep(1000)
+	tap(490,  675)
+	mSleep(400)
+	--打开坐标
+	da_kaiX, da_kaiY = findMultiColorInRegionFuzzy( 0xc8d3d4, "20|3|0x646b6c,35|9|0x666d6e,61|13|0xb2bcc2", 90, 731, 538, 853, 599)
+	if da_kaiX > 0 then
+		tap( 800,  569)
+		mSleep(2000)
+		--匹配坐标
+			mSleep(400)
+			tap(1035,  550)
+			mSleep(2000)
+				--判定进入准备时的坐标
+			while true do
+				zhun_beiX, zhun_beiY = tsFindText(index, "准", 568, 1, 633, 32, "CCD3D8 , 322C26", 65)
+				if zhun_beiX > 0 then
+					mSleep(1500)
+					tap(632,   82)
+					mSleep(4000)
+					--内容已复制到剪贴板!
+					--离开按钮检测
+					local touch = touch(1)
+					touch:on( 190,  537):move( 190,  507)
+					mSleep(3000)
+					touch = touch:on( 190,  537)
+					touch:off()
+					local tab = {
+						"300003007f33f7f33e603066030a6634e6e37e7e37a76f33e6f33e67326637a7c3de7c34e6e3026233e6037e7f3207f3007230000$离$206$20$21",
+					}
+					local index = addTSOcrDictEx(tab)
+					while (true) do
+						li_kaiX, li_kaiY = tsFindText(index, "离",583, 627,645, 658, "B1B2B3 , 4D4C4B", 65)
+						if li_kaiX > 0 then
+							mSleep(1000)
+							tap(623,  636)
+							--内容已复制到剪贴板!
+							local tab = {
+								"ffffffffff8008e0011c0073801e703f0fffc1ffe03800070000e0001fffe3fffe7fc1ce0039c007380067003ce01f1e03c@001$匹$189$19$21",
+							}
+							local index = addTSOcrDictEx(tab)
+							while true do
+								pi_peiX, pi_peiY = tsFindText(index, "匹", 967, 536, 1090, 582, "3E4141 , 3D4141", 65)
+								if pi_peiX > 0 then
+									mSleep(3000)
+									tap(466,  564)
+									mSleep(500)
+									tap( 1072,  102)
+									toast("结束",1)
+									return
+								end
+							end
+							
+						else
+							tap(1082,  529)
+							mSleep(500)
+							tap(1082,  529)
+							mSleep(500)
+							tap(1082,  529)
+							mSleep(500)
+							tap(969,  570)
+							mSleep(500)
+							tap(1009,  657)
+							mSleep(500)
+							tap( 982,  483)
+							mSleep(500)
+							tap( 1070,  418)
+							mSleep(500)
+						end
+					end
+				end
+			end			
+	else
+		toast("江湖英雄榜已经完成",1)
+		return
+	end
+end
+
+function common.jian_zhong()
+	-- body
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	if huo_dongX > 0 then
+		mSleep(500)
+		tap( 905,   36)
+		toast("生死剑冢",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	mSleep(1000)
+	tap(473,  693)
+	mSleep(1000)
+	tap(902,  288)
+	mSleep(1000)
+	tap(1019,  555)
+--内容已复制到剪贴板!
+	local tab = {
+	"c00198003b00067fffcc67398c433188c63118ffffffffff000c8003b78006ff83dbfee303f8601f0c1f71bf873f8077800e0000@11$取$199$19$22",
+	}
+	local index = addTSOcrDictEx(tab)
+
+	while (true) do
+		--进入游戏中
+		qu_xiaoX, qu_xiaoY = tsFindText(index, "取", 782, 479, 883, 520, "4D4C4A , 3B4140 # 383A39 , 373A39", 65)
+		if qu_xiaoX > 0 then
+			mSleep(2000)
+			tap( 809,  484)
+			mSleep(4000)
+			tap(788,  476)
+			mSleep(35000)
+			local touch = touch(1)
+			local tab = {
+				"300003007f37f7f33f603276030e6636e7e37e7e37ef6f3fe6f37e6f77e637e7e3de7e35e6e3066737f6037f7f3227f3007f30000$离$237$20$21",
+			}
+			local index = addTSOcrDictEx(tab)
+			while (true) do
+				--攻击循环
+				touch:on( 190,  537):move( 190,  507)
+				mSleep(3000)
+				touch = touch:on( 190,  537)
+				touch:off()
+				tap(1082,  529)
+				mSleep(500)
+				tap(1082,  529)
+				mSleep(500)
+				tap(1082,  529)
+				mSleep(500)
+				tap(969,  570)
+				mSleep(500)
+				tap(1009,  657)
+				mSleep(500)
+				tap( 982,  483)
+				mSleep(500)
+				tap( 1070,  418)
+				mSleep(500)
+				--结束后的离开坐标
+				x, y = tsFindText(index, "离", 577, 624, 650, 660, "A3A4A4 , 5C5A5A", 65)
+				if x > 0 then
+					mSleep(400)
+					tap( 618,  635)
+					mSleep(400)
+					toast("生死剑冢结束",1)
+					return
+				end
+			end
+		end
+	end
+
+	
+	
+	
 end
 	
 
