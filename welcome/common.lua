@@ -708,9 +708,88 @@ function common.jian_zhong()
 			end
 		end
 	end
+end
 
-	
-	
+
+function common.yan_men()
+	-- body
+	local tab = {
+		"020000c060382d0e1e700e1c00000c000230018fc467f31f8dfda3ded8efe77219f9047e031e00c000300004008100@00$活$129$18$21",
+	}
+	local index = addTSOcrDictEx(tab)
+	huo_dongX, huo_dongY = tsFindText(index, "活",873, 15, 928, 72, "D1D2C5 , 191810 # D1D2C2 , 191812 # C0C0AC , 292928", 50)
+	if huo_dongX > 0 then
+		mSleep(500)
+		tap( 905,   36)
+		toast("雁门烽火关",1)
+	else
+		toast("请重启脚本",1)
+		return
+	end
+	mSleep(1000)
+	tap(491,  684)
+	mSleep(1000)
+	tap(455,  294)
+	mSleep(1000)
+	--判断进入游戏
+--内容已复制到剪贴板!
+	local tab = {
+	"0600099fe667f999987fe21ff88667f219f64781c1e063fc3bf7fcf87e260f81fff05f8e100386006$敌$166$18$18",
+	"000e0383c018fff1ffff3ffff3cc1818ffe18ffe1afff1f0070ffff1fffc7b3b0fb3305b3b85bfff1ffff1f3311b33113fff03fff01ffe$确$274$20$22",
+	}
+	local index = addTSOcrDictEx(tab)
+
+	while(true) do
+		di_fangX, di_fangY = tsFindText(index, "敌",704, 1, 762, 25, "A3A4A4 , 5C5A5A # DE9FA6 , 202922", 65)
+		--确定坐标
+		que_dingX, que_dingY = tsFindText(index, "确", 783, 470, 881, 515, "51504E , 3F4544", 65)
+		if que_dingX > 0 then
+			mSleep(1000)
+			tap(812,  492)
+		end
+		if di_fangX > 0 then
+			mSleep(1000)
+		
+		local tab = {
+		"300003007f33e7f33e60302603026634a6e34a7a37a76f33e6f33e4332643727c35a7c34a663026233e6033e613007f3000030000$离$180$20$21",
+		}
+		local index = addTSOcrDictEx(tab)
+
+			local touch = touch(1)
+			while (true) do
+				--攻击循环
+				touch:on( 190,  537):move( 190,  507)
+				mSleep(3000)
+				touch = touch:on( 190,  537)
+				touch:off()
+				tap(1082,  529)
+				mSleep(500)
+				tap(1082,  529)
+				mSleep(500)
+				tap(1082,  529)
+				mSleep(500)
+				tap(969,  570)
+				mSleep(500)
+				tap(1009,  657)
+				mSleep(500)
+				tap( 982,  483)
+				mSleep(500)
+				tap( 1070,  418)
+				mSleep(500)
+				tap(1148,  619)
+				--结束后的离开坐标
+				x, y = tsFindText(index, "离", 570, 618,653, 668, "CCCBCA , 323434", 75)
+				if x > 0 then
+					mSleep(400)
+					tap( 618,  635)
+					mSleep(400)
+					toast("生死剑冢结束",1)
+					return
+				end
+			end
+		end
+	end
+
 	
 end
 	

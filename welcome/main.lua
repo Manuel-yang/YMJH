@@ -283,7 +283,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "daliy_mission",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "每日一卦,茶馆说书,课业,帮派任务,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢",         
+                ["list"] = "每日一卦,茶馆说书,课业,帮派任务,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -343,6 +343,10 @@ if UIret == 1 then
 			--势力任务
 			mSleep(1000)
             common.jian_zhong()
+		elseif  new[i] == "8" then
+			--势力任务
+			mSleep(1000)
+            common.yan_men()
         end
     end
 	--common.fu_li()
