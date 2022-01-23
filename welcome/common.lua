@@ -813,6 +813,54 @@ function common.pin_qi()
 		end
 	end
 end
+
+
+function common.tian_ji_pai()
+	-- body
+	tools.check()
+	tap(  1171,  178)
+	mSleep(1000)
+	tap( 1156,  323)
+	mSleep(1000)
+	tap(1105,  113)
+	mSleep(1000)
+	tap(488,  408)
+	mSleep(1000)
+	tap( 790,  680)
+	mSleep(1000)
+	for i = 0, 3 do
+		tap( 999,  180)
+		mSleep(1000)
+		tap( 830,  501)
+		mSleep(1000)
+	end
+	mSleep(1000)
+	tap(315,  408)
+	mSleep(400)
+--内容已复制到剪贴板!
+	local tab = {
+		"008000380c060181863078c61f18c76319cc63718c783fff87ff9cc631d8c61b18c1e3183c63030c60700c0e0101800$全$148$19$20",
+	}
+	local index = addTSOcrDictEx(tab)
+	while (true) do
+		x, y = tsFindText(index, "全",1078, 648, 1140, 673, "3B3E3E , 3B3E3E", 90)
+		if x > 0 then
+			mSleep(1000)
+			tap(1094,  657)
+			mSleep(1000)
+			break
+		end
+	end
+	
+	mSleep(10000)
+	tap(1166,   55)
+	mSleep(1000)
+	tap(825,  485)
+	mSleep(1000)
+	tap( 635,  654)
+	toast("天机牌完成",1)
+	return	
+end
 	
 
 return common

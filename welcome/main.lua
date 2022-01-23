@@ -18,7 +18,7 @@ MyTable = {
 	height = h * 0.6,
     ["pagetype"]= "multi",                  
     ["title"] = "一梦江湖辅助",
-    ["titles"] = "日常任务,其他,设置",                            
+    ["titles"] = "日常任务,还没想好叫啥,其他",                            
     pages            =
     {
 		--第一页
@@ -293,6 +293,25 @@ MyTable = {
 
 		},
 		--第二页
+
+		{
+			
+
+			{   --必填，控件类型，多选组合
+                ["type"] = "CheckBoxGroup",     
+                -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
+                ["id"] = "mission2",                             
+                -- 必填，无 ，单选框内容
+                ["list"] = "天机牌",         
+                ["scale"] = "0.4",  
+                --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
+                ["countperline"]= "2",  
+            },                   
+			
+
+		},
+
+		--第三页
 		{
 			
 
@@ -301,7 +320,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "others_mission",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "银票礼包, 生活鸡蛋",         
+                ["list"] = "银票礼包, 生活鸡蛋,天山碎玉",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -317,6 +336,7 @@ UIret,values = showUI(MyJsonString)
 if UIret == 1 then
     local daliy_mission =  values.daliy_mission 
 	local others_mission = values.others_mission
+	local mission2 = values.mission2
 	--其他页面的循环
 	new2 = others_mission:split("@")
 	for i=1,#new2,1 do
@@ -325,17 +345,17 @@ if UIret == 1 then
 			mSleep(2000)
             others.yin_piao()
         elseif new2[i] == "1" then
-			--银票礼盒
+			--购买鸡蛋
 			mSleep(2000)
             others.ji_dan()
+        elseif new2[i] == "2" then
+			--天山碎玉
+			mSleep(2000)
+            others.sui_yu()
 		end
 	end
 	
-	
-	
-	
-	
-	
+
 	
     new  = daliy_mission:split("@")
     for i=1,#new,1 do
@@ -381,6 +401,17 @@ if UIret == 1 then
             common.pin_qi()
         end
     end
+	
+	
+	
+	new3 = mission2:split("@")
+	for i=1,#new3,1 do
+        if new3[i] == "0" then
+			--天机牌
+			mSleep(2000)
+            common.tian_ji_pai()
+		end
+	end
 	--common.fu_li()
 	--common.jiang_li()
 end

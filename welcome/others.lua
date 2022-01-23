@@ -104,4 +104,26 @@ function others.ji_dan()
 end
 
 
+function others.sui_yu()
+	-- body
+	toast("领取天山碎玉",1)
+	mSleep(1000)
+	tools.check()
+	mSleep(1000)
+	tap(1164,  172)
+	mSleep(1000)
+	tap( 1020,  317)
+	mSleep(1000)
+	tap(212,  556)
+	mSleep(1000)
+	tap( 509,  536)
+	mSleep(1000)
+	tap( 917,  393)
+	mSleep(1000)
+	tap( 938,  195)
+	mSleep(1000)
+	tap( 1167,   55)
+	toast("碎玉领取成功",1)
+end
+
 return others
