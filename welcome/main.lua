@@ -3,6 +3,7 @@
 require("TSLib")
 local common = require("common")
 local tools = require("tools")
+local others = require("others")
 local ts = require("ts")
 local cjson = ts.json
 init(1)
@@ -17,7 +18,7 @@ MyTable = {
 	height = h * 0.6,
     ["pagetype"]= "multi",                  
     ["title"] = "一梦江湖辅助",
-    ["titles"] = "基本,日常,设置",                            
+    ["titles"] = "日常任务,其他,设置",                            
     pages            =
     {
 		--第一页
@@ -283,7 +284,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "daliy_mission",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "每日一卦,茶馆说书,课业,帮派任务,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关",         
+                ["list"] = "每日一卦,帮派任务,课业,茶馆说书,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关,平起雁门关",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -293,13 +294,19 @@ MyTable = {
 		},
 		--第二页
 		{
-			{
+			
 
-				--["type"] = "RadioGroup",            
-				--["id"] = "sui",                      
-				--["list"] = "1岁,30岁,50岁,70岁",     
-				--["select"] = "1",                   
-			},
+			{   --必填，控件类型，多选组合
+                ["type"] = "CheckBoxGroup",     
+                -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
+                ["id"] = "others_mission",                             
+                -- 必填，无 ，单选框内容
+                ["list"] = "银票礼包, 生活鸡蛋",         
+                ["scale"] = "0.4",  
+                --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
+                ["countperline"]= "2",  
+            },                   
+			
 
 		}
 	}
@@ -309,44 +316,69 @@ UIret,values = showUI(MyJsonString)
 --遍历上面的多选框并执行相应功能
 if UIret == 1 then
     local daliy_mission =  values.daliy_mission 
+	local others_mission = values.others_mission
+	--其他页面的循环
+	new2 = others_mission:split("@")
+	for i=1,#new2,1 do
+        if new2[i] == "0" then
+			--银票礼盒
+			mSleep(2000)
+            others.yin_piao()
+        elseif new2[i] == "1" then
+			--银票礼盒
+			mSleep(2000)
+            others.ji_dan()
+		end
+	end
+	
+	
+	
+	
+	
+	
+	
     new  = daliy_mission:split("@")
     for i=1,#new,1 do
         if new[i] == "0" then
 			--每日一卦
-			mSleep(1000)
+			mSleep(2000)
             common.suan_gua()
         elseif  new[i] == "1" then
-			--茶馆
-			mSleep(1000)
-            common.cha_guan()
+			--帮派
+			mSleep(2000)
+            common.bang_pai()
         elseif  new[i] == "2" then
             --课业
-			mSleep(1000)
+			mSleep(2000)
 			common.ke_ye()
         elseif  new[i] == "3" then
-			--帮派任务
-			mSleep(1000)
-            common.bang_pai()
+			--茶馆
+			mSleep(2000)
+            common.cha_guan()
         elseif  new[i] == "4" then
 			--势力任务
-			mSleep(1000)
+			mSleep(2000)
             common.shi_li()
 		elseif  new[i] == "5" then
 			--每日论剑
-			mSleep(1000)
+			mSleep(2000)
             common.lun_jian()
 		elseif  new[i] == "6" then
-			--势力任务
-			mSleep(1000)
+			--江湖英雄榜
+			mSleep(2000)
             common.ying_xiong_bang()
 		elseif  new[i] == "7" then
-			--势力任务
-			mSleep(1000)
+			--生死剑冢
+			mSleep(2000)
             common.jian_zhong()
 		elseif  new[i] == "8" then
-			--势力任务
-			mSleep(1000)
+			--烽火雁门关
+			mSleep(2000)
             common.yan_men()
+		elseif  new[i] == "9" then
+			--烽火雁门关
+			mSleep(2000)
+            common.pin_qi()
         end
     end
 	--common.fu_li()
