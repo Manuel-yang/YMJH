@@ -904,7 +904,6 @@ function common.she_yan()
 				}
 				local index = addTSOcrDictEx(tab)
 				for i = 1, #location,2 do
-					mSleep(800)
 					local j = i + 1
 					tap(location[i], location[j])
 					mSleep(1000)
@@ -912,7 +911,7 @@ function common.she_yan()
 					mSleep(1000)
 					tap( 697,  291)
 					--内容已复制到剪贴板!
-					mSleep(2000)
+					mSleep(3000)
 					x, y = tsFindText(index, "买", 581, 471, 694, 521, "404140 , 3F4140", 80)
 					if x > 0 then
 						mSleep(400)
@@ -921,8 +920,9 @@ function common.she_yan()
 						tap(  819,  485)
 						mSleep(500)
 						tap(1019,  560)
+						
 					else
-						mSleep(400)
+						mSleep(1400)
 						tap(1167,   59)
 					end
 				end
