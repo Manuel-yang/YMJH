@@ -284,7 +284,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "daliy_mission",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "每日一卦,帮派任务,课业,茶馆说书,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关,平起雁门关",         
+                ["list"] = "每日一卦,帮派任务,门客设宴,课业,茶馆说书,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关,平起雁门关",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -336,7 +336,7 @@ UIret,values = showUI(MyJsonString)
 if UIret == 1 then
     local daliy_mission =  values.daliy_mission 
 	local others_mission = values.others_mission
-	local mission2 = values.mission2
+	local mission_2 = values.mission2
 	--其他页面的循环
 	new2 = others_mission:split("@")
 	for i=1,#new2,1 do
@@ -367,44 +367,46 @@ if UIret == 1 then
 			--帮派
 			mSleep(2000)
             common.bang_pai()
-        elseif  new[i] == "2" then
+		elseif  new[i] == "2" then
+			--门客设宴
+			mSleep(2000)
+            common.she_yan()	
+        elseif  new[i] == "3" then
             --课业
 			mSleep(2000)
 			common.ke_ye()
-        elseif  new[i] == "3" then
+        elseif  new[i] == "4" then
 			--茶馆
 			mSleep(2000)
             common.cha_guan()
-        elseif  new[i] == "4" then
+        elseif  new[i] == "5" then
 			--势力任务
 			mSleep(2000)
             common.shi_li()
-		elseif  new[i] == "5" then
+		elseif  new[i] == "6" then
 			--每日论剑
 			mSleep(2000)
             common.lun_jian()
-		elseif  new[i] == "6" then
+		elseif  new[i] == "7" then
 			--江湖英雄榜
 			mSleep(2000)
             common.ying_xiong_bang()
-		elseif  new[i] == "7" then
+		elseif  new[i] == "8" then
 			--生死剑冢
 			mSleep(2000)
             common.jian_zhong()
-		elseif  new[i] == "8" then
+		elseif  new[i] == "9" then
 			--烽火雁门关
 			mSleep(2000)
             common.yan_men()
-		elseif  new[i] == "9" then
+		elseif  new[i] == "10" then
 			--烽火雁门关
 			mSleep(2000)
             common.pin_qi()
         end
     end
 	
-	
-	
-	new3 = mission2:split("@")
+	new3 = mission_2:split("@")
 	for i=1,#new3,1 do
         if new3[i] == "0" then
 			--天机牌

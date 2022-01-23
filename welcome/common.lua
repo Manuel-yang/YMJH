@@ -314,21 +314,32 @@ function common.shi_li()
 	tools.huo_dong("势力任务")
 	tap( 371,  684)
 	--势力任务前往
-	x,y = findMultiColorInRegionFuzzy( 0xd2dadc, "28|12|0xbfcccf,27|-5|0xc0cbce,41|-8|0xb7c3c6,48|-1|0x010101", 90, 657, 211, 784, 258)
+	mSleep(2000)
+	x,y = findMultiColorInRegionFuzzy( 0xbcc7c8, "0|0|0xbcc7c8,29|-2|0x1a1c1c,28|-3|0x010101,28|-7|0x010101,43|-9|0x343839,33|-1|0x010101,43|-9|0x343839,43|-9|0x343839", 90, 667, 212, 774, 273)
 	if x > 0 then
-		randomTap(x, y)
+		tap(734,  233)
 		mSleep(3000)
-		
+		local tab = {
+		"360236b336f3fff7fff63c3e3cbc3df83ff0ff37ff33b3373f3f3ffe$势$151$16$14",
+		}
+		local index = addTSOcrDictEx(tab)
+
 		while (true) do
 			local touch = touch(1) 
 			touch:on( 238,  209):move(200,250):move(200,280):move(200,310):off()
-			tap(229,  180)
+			mSleep(1000)
+			tap(223,  146)
 			mSleep(1500)
 			
 			ti_muX, ti_muY = findMultiColorInRegionFuzzy( 0xffffff, "3|2|0xffffff,6|2|0x5c6679,-141|216|0x141b28,-171|228|0x19212f,-171|295|0x141a28,-260|392|0x0d1016,-261|487|0x0d1018,-1|90|0xcbcdd0", 90, 799, 11, 1243, 659)
+			x, y = tsFindText(index, "势", 102, 127, 191, 168, "3C6F82 , 315E6F", 70)
 			if ti_muX > 0 then
 				mSleep(1000)
 				tap(1022,  258)
+			end
+			if x < 0 then
+				toast("帮派势力已完成",1)
+				return
 			end
 		end
 		
@@ -860,6 +871,73 @@ function common.tian_ji_pai()
 	tap( 635,  654)
 	toast("天机牌完成",1)
 	return	
+end
+
+
+function common.she_yan()
+	-- body
+	tools.huo_dong("门客设宴")
+	mSleep(1000)
+	tap( 368,  689)
+	mSleep(2000)
+	x,y = findMultiColorInRegionFuzzy( 0x797f81, "0|0|0x797f81,3|0|0x5f6465,4|-1|0x010101,7|-1|0x010101,10|-1|0xcad4d6,11|-1|0x494d4e,12|-1|0x010101,12|-1|0x010101,16|-1|0x010101", 90, 873, 485, 988, 536)
+	if x > 0 then
+		tap(  934,  510)
+		mSleep(2000)
+		tap(  846,  200)
+		mSleep(3000)
+		--内容已复制到剪贴板!
+		local tab = {
+			"008046101cf3ff047fc000087ec38fd9915be2ebe9456d3cbdbd9fb73036161f07ff319f43e308f861f9ec300d84002$邀$182$19$20",
+		}
+		local index = addTSOcrDictEx(tab)
+		while (true) do
+			yao_qingX, yao_qingY = tsFindText(index, "邀", 993, 465,1134, 509, "2E302F , 2D302F", 70)
+			if yao_qingX > 0 then
+				mSleep(400)
+				tap(1052,  490)
+				mSleep(1000)
+				tap(  637,  474)
+				local location = { 608,  272,752,  279,873,  275,1025,  262, 602,  426,736,  410,887,  413,1018,  422}
+				local tab = {
+					"000c0803858030b0c6161cc29998d3bb1a3263470cc841b9003e27ff84ffc8901b1003720067400cef018df031f80e1000c@000$买$152$19$21",
+				}
+				local index = addTSOcrDictEx(tab)
+				for i = 1, #location,2 do
+					mSleep(800)
+					local j = i + 1
+					tap(location[i], location[j])
+					mSleep(1000)
+					tap(1000,  544)
+					mSleep(1000)
+					tap( 697,  291)
+					--内容已复制到剪贴板!
+					mSleep(2000)
+					x, y = tsFindText(index, "买", 581, 471, 694, 521, "404140 , 3F4140", 80)
+					if x > 0 then
+						mSleep(400)
+						tap( 628,  499)
+						mSleep(1000)
+						tap(  819,  485)
+						mSleep(500)
+						tap(1019,  560)
+					else
+						mSleep(400)
+						tap(1167,   59)
+					end
+				end
+				mSleep(500)
+				tap( 350,  584)
+				mSleep(1000)
+				tap(812,  500)
+				toast("门客设宴已经完成",1)
+				return
+			end
+		end
+	else
+		toast("门客设宴已经完成",1)
+		return
+	end
 end
 	
 
