@@ -6,9 +6,9 @@ function others.yin_piao()
 	tools.zhen_bao_ge()
 	-- body
 	mSleep(1000)
-	tap( 1164,  349)
+	tap( 1154,  443)
 	mSleep(1000)
-	tap( 401,  142)
+	tap( 178,  145)
 	mSleep(1000)
 	tap( 620,  284)
 	mSleep(1000)
@@ -24,13 +24,15 @@ function others.yin_piao()
 --内容已复制到剪贴板!
 	local tab = {
 		"c001d8003bfffe7fffcffff98c63318cc63198ffffffffff000ce003b7c00eff83dffee303f8601f0c1f71bf873f8077800e0000c0001@0$取$229$19$23",
-		"00e0007c003e001fffffffff80008c00199fe333fec666f8ccce199bcffff9fff18ccc3199863330c67e1ccfc3@1$使$189$19$19"
+		"00e0007c003e001fffffffff80008c00199fe333fec666f8ccce199bcffff9fff18ccc3199863330c67e1ccfc3@1$使$189$19$19",
+		"20030c03c3c3e073c20460c0c0607038f81cf80e3eff09bf0060f0180e0640c1f8387c071801@10$次$116$18$17",
 	}
 	local index = addTSOcrDictEx(tab)
 
 	while(true) do
 		x, y = tsFindText(index, "取", 391, 473, 465, 507, "38312D , 37312D", 80)
 		shi_yongX, shi_yongY = tsFindText(index, "使", 879, 372, 964, 406, "464A49 , 464A49", 80)
+		xian_gouX, xian_gouY = tsFindText(index, "次",645, 303, 705, 339, "ADAFAF , 535251", 80)
 		if x > 0 then
 			mSleep(1000)
 			tap( 431,  485)
@@ -42,8 +44,17 @@ function others.yin_piao()
 			mSleep(1000)
 			tap( 913,  398)
 			mSleep(1000)
+			tap(636,  488)
+			mSleep(1000)
 			tap(1171,   60)
 			toast("银票礼盒购买成功",1)
+			return
+		elseif  xian_gouX > 0 then
+			mSleep(1000)
+			toast("已经购买银票礼盒了",1)
+			tap(452,  501)
+			mSleep(1000)
+			tap(1168,   57)
 			return
 		end		
 	end
@@ -57,6 +68,7 @@ function others.ji_dan()
 	tap(1166,  587)
 	mSleep(1000)
 	tap(205,  501)
+	mSleep(1000)
 	local touch = touch(1)
 	touch:on( 526,  589):move(  523,  157):off()
 	mSleep(1-00)
