@@ -385,8 +385,10 @@ if UIret == 1 then
             common.shi_li()
 		elseif  new[i] == "6" then
 			--每日论剑
+			
 			mSleep(2000)
-            common.lun_jian()
+			common.lun_jian()
+            
 		elseif  new[i] == "7" then
 			--江湖英雄榜
 			mSleep(2000)
@@ -394,11 +396,14 @@ if UIret == 1 then
 		elseif  new[i] == "8" then
 			--生死剑冢
 			mSleep(2000)
-            common.jian_zhong()
+			common.jian_zhong()
+
+			
 		elseif  new[i] == "9" then
 			--烽火雁门关
+
 			mSleep(2000)
-            common.yan_men()
+			common.yan_men()
 		elseif  new[i] == "10" then
 			--烽火雁门关
 			mSleep(2000)

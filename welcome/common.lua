@@ -97,6 +97,12 @@ function common.cha_guan()
 					Tx,Ty = findMultiColorInRegionFuzzy( 0x878d89, "36|8|0xd0d6cf", 90, 872, 376, 977, 405)
 					randomTap(Tx,Ty)
 					randomTap(Tx,Ty)
+					mSleep(1000)
+					tap( 649,  492)
+					mSleep(800)
+					tap(943,  396)
+					mSleep(800)
+					tap(943,  396)
 					return
 				end
 			end
@@ -174,10 +180,12 @@ function common.ke_ye()
 					"1800118201182011860318c03198021b386180e41803cd801cd801c18074181e61b3821b0021980318c0318e0318403$交$114$20$19",
 				}
 				local index = addTSOcrDictEx(tab)
-				ti_jiaoX, ti_jiaoY = tsFindText(index, "交", 971, 396, 1098, 431, "010101 , 010101 # 181918 , 181918", 90)
+				ti_jiaoX, ti_jiaoY = tsFindText(index, "交", 865, 391, 1210, 540, "010101 , 010101 # 181918 , 181918", 90)
 				if ti_jiaoX > 0 then
-					tap( 1023,  425)
+					tap( ti_jiaoX,  ti_jiaoY)
 				end
+				
+
 				--结束按钮
 				mSleep(1000)
 				finishX, finishY = findMultiColorInRegionFuzzy( 0x42544d, "19|-1|0x475850,35|-5|0x56645e,16|26|0xbdc8c6,18|29|0xbfc9c8,24|32|0x130c0b,48|32|0xc0c9c7", 90, 730, 407, 935, 530)
@@ -274,8 +282,11 @@ function common.bang_pai()
 				--将右侧拖到第一个任务
 				local touch = touch(1) 
 				touch:on( 238,  209):move(200,250):move(200,280):move(200,310):off()
+				mSleep(800)
 				tap(210,  154)
 				mSleep(1500)
+
+
 				--一键提交坐标
 				local tab = {
 					"1800118201182011860318c03198021b386180e41803cd801cd801c18074181e61b3821b0021980318c0318e0318403$交$114$20$19",
@@ -921,7 +932,7 @@ function common.she_yan()
 						mSleep(500)
 						tap(1019,  560)
 						
-					else
+					elseif x < 0 then
 						mSleep(1400)
 						tap(1167,   59)
 					end

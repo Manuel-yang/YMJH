@@ -52,8 +52,7 @@ function tools.check()
 		if huo_dongX > 0 then
 			return true
 		else
-			toast("请返回游戏页面",1)
-			mSleep(1000)
+			return false
 		end
 	end
 end
