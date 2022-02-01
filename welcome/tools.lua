@@ -57,4 +57,13 @@ function tools.check()
 	end
 end
 
+function tools.huan_xian()
+	-- body
+	if tools.check() then
+		mSleep(1000)
+		tap(902,   38)
+	else
+		toast("请返回桌面",1)
+	end
+end
 return tools

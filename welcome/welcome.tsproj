@@ -6,3 +6,6 @@ main.lua
 common.lua
 tools.lua
 others.lua
+
+test.lua
+living_skill.lua

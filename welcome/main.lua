@@ -4,6 +4,7 @@ require("TSLib")
 local common = require("common")
 local tools = require("tools")
 local others = require("others")
+local living_skill = require("living_skill")
 local ts = require("ts")
 local cjson = ts.json
 init(1)
@@ -27,7 +28,7 @@ MyTable = {
             {
                 ["type"] = "Label",
                 ["align"] = "center",
-                ["text"] = "1.当前为测试开发版本",
+                ["text"] = "1.当前为日产任务版本",
                 ["size"] = 12,
 				["align"] = "center",
                 ["width"] = -1,
@@ -284,7 +285,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "daliy_mission",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "每日一卦,帮派任务,门客设宴,课业,茶馆说书,势力任务(测试中，无选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关,平起雁门关",         
+                ["list"] = "每日一卦,帮派任务,门客设宴,课业,茶馆说书,势力任务(勿选),每日论剑,江湖英雄榜,生死剑冢,雁门烽火关,平起雁门关",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -302,7 +303,7 @@ MyTable = {
                 -- 选填，无，控件 ID  以 table 格式返回返回值时必填，否则无法获取返回值
                 ["id"] = "mission2",                             
                 -- 必填，无 ，单选框内容
-                ["list"] = "天机牌",         
+                ["list"] = "天机牌, 只刷论剑",         
                 ["scale"] = "0.4",  
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
@@ -325,9 +326,36 @@ MyTable = {
                 --选填，1，仅引擎版本支持 iOS v3.00-157 及 Android v2.3.6 及其以上版本
                 ["countperline"]= "2",  
             },                   
-			
 
-		}
+		},
+		--第四页
+		{
+            {
+                ["type"] = "ComboBox",         -- 必填，控件类型，下拉框
+                ["id"] = "cb2",                             
+                -- 选填，无，控件ID 以 table 格式返回返回值时必填，否则无法获取返回值
+                ["list"] = "采草,伐木",          -- 必填，无，下拉框内容
+                ["select"] = "0",              -- 选填，0，默认选中项 ID
+                ["data"] = "一级,二级#"..
+                "一级,二级",
+                ["source"] = "这里必须一致",                      
+                --  必填，无，主选项下拉框控件 source 属性必须与子选项下拉框的 dataSource 属性一致
+                ["prompt"] = true,
+            },
+            {
+                ["type"] = "ComboBox",       -- 必填，控件类型，下拉框
+                ["id"] = "cb3",                             
+                -- 选填，无控件 ID，以 table 格式返回返回值时必填，否则无法获取返回值
+                ["select"] = "0",                           
+                -- 选填，无，子选项下拉框默认选中项
+                ["dataSource"] = "这里必须一致",            
+                --必填，无，主选项下拉框控件 source 属性必须与子选项下拉框的 dataSource 属性一致
+                ["prompt"] = true,
+            },	
+ 
+	
+		},
+
 	}
 }
 local MyJsonString = cjson.encode(MyTable)
@@ -397,11 +425,8 @@ if UIret == 1 then
 			--生死剑冢
 			mSleep(2000)
 			common.jian_zhong()
-
-			
 		elseif  new[i] == "9" then
 			--烽火雁门关
-
 			mSleep(2000)
 			common.yan_men()
 		elseif  new[i] == "10" then
@@ -417,8 +442,26 @@ if UIret == 1 then
 			--天机牌
 			mSleep(2000)
             common.tian_ji_pai()
+		elseif new3[i] == "1" then
+			while (true) do
+				mSleep(2000)
+				common.lun_jian()
+			end
 		end
 	end
+	
+	local cb2 =  values.cb2
+    local  cb3 =  values.cb3
+    if cb2 == "0" and cb3 == "0" then
+		living_skill.open_cao()
+    elseif cb2 == "0" and cb3 == "1" then
+        toast("采草二级",1) 
+		living_skill.cao_level2()
+    elseif cb2 == "1" and cb3 == "0" then    
+        toast("伐木一级",1)
+    elseif cb2 == "1" and cb3 == "1" then    
+        toast("伐木二级",1)
+    end
 	--common.fu_li()
 	--common.jiang_li()
 end
