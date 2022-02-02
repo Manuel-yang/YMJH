@@ -117,7 +117,82 @@ function living_skill.cao_level2()
 			mSleep(5000)
 		end
 	end
+end
 
+
+
+
+
+function living_skill.kuang_level1()
+
+--内容已复制到剪贴板!
+	local tab = {
+		"1180e63fff86c01201e426fbdb6fe9ef873698db637e1cc0600000006381b7c7ff199867f18ff31f8ffc3002800e000800200@00$挖矿$179$14$29",
+	}
+	local index = addTSOcrDictEx(tab)
+	--初始1线
+	local line = 1
+	mSleep(2000)
+	while (true) do
+		if line > 8 then
+			line = 1
+		end
+		cai_jiX, cai_jiY = tsFindText(index, "挖矿",936, 476, 989, 501, "D4D5CE , 2B2931", 60)
+		--开始采集
+		if cai_jiX > 0 then
+			mSleep(1000)
+			--没有装备工具
+			x,y = findMultiColorInRegionFuzzy( 0x727666, "-7|4|0x5d5d46,-5|10|0x6f7365,6|7|0x707068,-23|3|0x727566,-26|4|0x737666,-27|5|0x727567,-28|7|0x717467,-30|8|0x747567,-37|7|0x161c05", 90, 852, 437, 969, 543)
+			if x > 0 then
+				mSleep(1000)
+				tap(907,  485)
+				mSleep(1000)
+				jie_shuX, jie_shuY = findMultiColorInRegionFuzzy( 0xffffff, "1|3|0xffffff,4|5|0xffffff,3|6|0xffffff,4|15|0xffffff,16|1|0xffffff,-9|3|0xffffff,-13|2|0xffffff,-15|4|0xffffff,2|-6|0xffffff", 90, 755, 358, 875, 451)
+				if jie_shuX > 0 then
+					mSleep(1000)
+					toast("装备用完，结束任务",1)
+					return
+				end
+				mSleep(1000)
+				tap(  821,  404)
+				mSleep(2000)
+			end
+
+			tap( 907,  495)
+			mSleep(5000)
+			--jiaX,jiaY = findMultiColorInRegionFuzzy( 0xffffff, "1|0|0xffffff,1|-17|0xffffff,16|-17|0xffffff,2|-29|0xffffff,-7|-3|0x0c0c0d,-6|-4|0x0d0d0e,-8|-3|0x0c0c0d,-9|-2|0x0d0d0e,-10|-1|0x0b0c0c", 90, 743, 346, 872, 467)
+			--if jiaX > 0 then
+				--tap(818,  402)
+				--mSleep(3000)
+				--gou_maiX, gou_maiY = tsFindText(index, "购买", 580, 477, 689, 519, "565957 , 555957", 90)
+				--if gou_maiX > 0 then
+					--tap(649,  503)
+					--mSleep(1000)
+					--tap(836,  490)
+					--tap( 649,  503)
+					--return
+				--end
+			--end
+		else
+		--关闭学习配方
+		local tab = {
+			"06300f304e307db07db01db00db3fdfffdff0df01df07cb0fdb0ce300f300e300000000000006018601860186e386e3067306370616060626047700e7ffe7ffc$学习$220$16$32",
+		}
+		local index = addTSOcrDictEx(tab)
+			xue_xiX, xue_xiY = tsFindText(index, "学习", 871, 376, 975, 409, "545856 , 474A49", 60)
+			if line == 8 then
+				line = 0
+			end
+			if xue_xiX > 0 then
+				mSleep(1000)
+				tap(993,  257)
+				mSleep(1000)
+			end
+			line = line + 1
+			tools.huan_xian(line)
+			mSleep(7000)
+		end
+	end
 
 end
 

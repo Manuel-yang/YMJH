@@ -41,6 +41,8 @@ function common.suan_gua()
 			end
 		end
 	else
+		mSleep(1000)
+		tap( 1163,   50)
 		toast("每日一卦已经完成",1)
 		return
 	end
@@ -241,6 +243,8 @@ function common.bang_pai()
 		randomTap(x, y)
 		mSleep(1000)
 	else
+		mSleep(1000)
+		tap( 1163,   50)
 		toast("帮派任务已经完成",1)
 		return
 	end	

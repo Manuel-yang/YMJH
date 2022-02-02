@@ -334,7 +334,7 @@ MyTable = {
                 ["type"] = "ComboBox",         -- 必填，控件类型，下拉框
                 ["id"] = "cb2",                             
                 -- 选填，无，控件ID 以 table 格式返回返回值时必填，否则无法获取返回值
-                ["list"] = "采草,伐木",          -- 必填，无，下拉框内容
+                ["list"] = "采草,挖矿",          -- 必填，无，下拉框内容
                 ["select"] = "0",              -- 选填，0，默认选中项 ID
                 ["data"] = "一级,二级#"..
                 "一级,二级",
@@ -458,9 +458,10 @@ if UIret == 1 then
         toast("采草二级",1) 
 		living_skill.cao_level2()
     elseif cb2 == "1" and cb3 == "0" then    
-        toast("伐木一级",1)
+        toast("挖矿一级",1)
+		living_skill.kuang_level1()
     elseif cb2 == "1" and cb3 == "1" then    
-        toast("伐木二级",1)
+        toast("挖矿二级",1)
     end
 	--common.fu_li()
 	--common.jiang_li()
