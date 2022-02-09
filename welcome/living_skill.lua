@@ -152,10 +152,11 @@ function living_skill.kuang_level1()
 					mSleep(1000)
 					toast("装备用完，结束任务",1)
 					return
+				else
+					mSleep(1000)
+					tap( 822,  395)
+					mSleep(2000)
 				end
-				mSleep(1000)
-				tap(  821,  404)
-				mSleep(2000)
 			end
 
 			tap( 907,  495)
